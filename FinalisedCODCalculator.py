@@ -275,8 +275,8 @@ def main():
     # Create a list of dictionaries to store the crack extension data
     data_list = []
 
-    for name, coord, extension, cumulative_extension in zip(image_names, coordinates, crack_extensions_mm,
-                                                            cumulative_crack_extensions_mm):
+    for name, coord, extension,  in zip(image_names, coordinates, crack_extensions_mm):
+
         # Extract numeric part and Unix time number using regular expressions
         match = re.match(r'DCB_(\d+)_(\d+)\.JPG', name)
 
@@ -287,8 +287,8 @@ def main():
                 "IDs": IDs,
                 "Unix Time": unix_time,
                 "Coordinates": coord,
-                "Crack Extension (mm)": extension,
-                "Cumulative Extension (mm)": cumulative_extension
+                "COD (mm)": extension,
+
             })
         else:
             print(f"Failed to extract parts from image name: {name}")

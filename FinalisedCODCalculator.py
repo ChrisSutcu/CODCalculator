@@ -300,7 +300,7 @@ def main():
     # Create a DataFrame from the data_list
     data = pd.DataFrame(data_list)
     # Specify the output CSV file path
-    output_directory = r"C:\Users\40130713\PhD\Year 3\Tests\Paper 1\CODtest"
+    output_directory = r""
     excel_file_path = os.path.join(output_directory, f"{group_name}COD_data.xlsx")
 
     # Check if the Excel file already exists
@@ -328,7 +328,7 @@ def main():
 
 
 if __name__ == "__main__":
-    image_directory = r"C:\Users\40130713\OneDrive - Queen's University Belfast\PhD\Year 3\Pictures\Paper 1\Control\Control 30mm\C30mm1"
+    image_directory = r""
     specimen_name = os.path.basename(image_directory)
     group_name = specimen_name[0:-1]
     image_paths = get_image_paths(image_directory)

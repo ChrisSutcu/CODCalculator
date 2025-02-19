@@ -10,17 +10,22 @@ Requirements
 
 Ensure you have the following Python libraries installed before running the script:
 
-pip install opencv-python numpy pandas xlsxwriter
+cv2
+numpy
+os
+csv
+pandas
+re
 
 Features
 
-Undistorts images using intrinsic camera parameters and distortion coefficients, the camera matrix must be found using a calibration step for a given camera and lens set up.
+Undistorts images using intrinsic camera parameters and distortion coefficients, the camera matrix must be found using a calibration step for a given camera and lens setup. This can be done using MATLAB.
 
 Allows manual selection of calibration and COD points.
 
 Tracks COD points across multiple images using optical flow.
 
-Computes crack extension and cumulative crack extension in millimeters.
+Computes COD for each subsequent image in millimeters.
 
 Saves results to an Excel file with specimen-specific sheets.
 
@@ -30,7 +35,7 @@ Ensure that the area of interest from the camera around the COD selection points
 Ensure that the side of the specimen is flat compared to the camera. 
 Bright colouring of the specimens helps reflect as much light as possible. 
 Use a flash or a torch to illuminate the specimen. 
-Select a suitable frequency of image acquisition so that optical flow can work appropriately and there is not large jumps in the COD points between images.
+Select a suitable frequency of image acquisition so that optical flow can work appropriately and there are not large jumps in the COD points between images.
 
 Usage
 
@@ -52,7 +57,7 @@ python script.py
 
 The script will display the first image in the folder.
 
-Press "z" to skip one image in the folder until the image that the crack is initiating is displayed.
+Press "z" to skip one image in the folder until the image that the crack is initiating (The non-linearity criterion is used to determine this) is displayed.
 
 
 4. Select Calibration Points
@@ -70,13 +75,15 @@ The script will track the COD points automatically using optical flow.
 
 6. Exit the Script
 
-Press x at any time to exit. There will be a de-dugging step at the end that shows the final tracked COD points, ensure this is representative of the COD you are aiming to capture.
+Press x at any time to exit. There will be a de-bugging step at the end that shows the final tracked COD points, ensure this is representative of the COD you are aiming to capture.
 
 The script will save the results before closing.
 
 7. Output
 
-Results are saved in an Excel file named {group_name}COD_data.xlsx in the same directory as the images.
+Results are saved in an Excel file named {group_name}COD_data.xlsx 
+
+Change the output_directory variable to change the location of this output file.
 
 The Excel file contains:
 
@@ -88,15 +95,13 @@ Unix Time: Extracted timestamp from the filename.
 
 Coordinates: Selected COD points.
 
-Crack Extension (mm): Computed COD in millimeters.
+COD (mm): Computed COD in millimeters.
 
 Notes
 
 The script expects images to follow a naming pattern like DCB_123_45678.JPG to extract ID and timestamp.
 
 If an Excel file already exists, the script appends data to the relevant sheet.
-
-Ensure consistent lighting and image quality for optimal optical flow tracking.
 
 Troubleshooting
 

@@ -24,7 +24,7 @@ crack_extensions_mm = []
 
 pixel_density = None  # Will be calculated dynamically
 
-# Intrinsic camera parameters
+# Intrinsic camera parameters K matrix parameters come from the camera calibration process!
 fx = 29236.3390294649  # Focal length in the x-direction
 fy = 29236.1897370766  # Focal length in the y-direction
 cx = 3012.00465642500  # Principal point x-coordinate

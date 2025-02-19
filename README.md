@@ -1,10 +1,9 @@
 # CODCalculator
-Crack Opening Displacement Calculator 
 README: Crack Opening Displacement (COD) Tracking Script
 
 Overview
 
-This script processes a series of images to track the crack opening displacement (COD) by selecting two points on each image and computing the COD in millimeters. The script also calibrates pixel density based on a known specimen thickness and saves the results to an Excel file.
+This script processes a series of images to track the crack opening displacement (COD) by selecting two points on the crack initiation image which are tracked using optical flow.This allows for computing COD in millimeters. The script also calibrates pixel density based on a known specimen thickness and saves the results to an Excel file.
 
 Requirements
 
@@ -19,13 +18,13 @@ re
 
 Features
 
-Undistorts images using intrinsic camera parameters and distortion coefficients, the camera matrix must be found using a calibration step for a given camera and lens setup. This can be done using MATLAB.
+Undistorts images using intrinsic camera parameters and distortion coefficients, the camera matrix must be found using a calibration process for a given camera, lens and focal length setup. This can be done using MATLAB.
 
 Allows manual selection of calibration and COD points.
 
 Tracks COD points across multiple images using optical flow.
 
-Computes COD for each subsequent image in millimeters.
+Computes COD for each successive image in millimeters.
 
 Saves results to an Excel file with specimen-specific sheets.
 
@@ -33,13 +32,13 @@ Experimental Consideration
 
 Ensure that the area of interest from the camera around the COD selection points is as large as possible so that the pixel density can be maximised.
 
-Ensure that the side of the specimen is flat compared to the camera. 
+Ensure that the side of the specimen is flat as much as possible compared to the camera. 
 
-Bright colouring of the specimens helps reflect as much light as possible. 
+Brightly colour the side of the specimens as it helps reflect as much light as possible. 
 
 Use a flash or a torch to illuminate the specimen. 
 
-Select a suitable frequency of image acquisition so that optical flow can work appropriately and there are not large jumps in the COD points between images.
+Select a suitable frequency of image acquisition so that optical flow can work appropriately and there are no large jumps in the COD points between images.
 
 Usage
 
@@ -61,7 +60,7 @@ python script.py
 
 The script will display the first image in the folder.
 
-Press "z" to skip one image in the folder until the image that the crack is initiating (The non-linearity criterion is used to determine this) is displayed.
+Press "z" to skip one image in the folder until the image corresponding to crack initiation is displayed (The non-linearity criterion is used to determine this).
 
 
 4. Select Calibration Points
@@ -79,7 +78,7 @@ The script will track the COD points automatically using optical flow.
 
 6. Exit the Script
 
-Press x at any time to exit. There will be a de-bugging step at the end that shows the final tracked COD points, ensure this is representative of the COD you are aiming to capture.
+Press x at any time to exit. There will be a de-bugging image at the end that shows the final tracked COD points, ensure this is representative of the COD you are aiming to capture.
 
 The script will save the results before closing.
 
@@ -103,7 +102,7 @@ COD (mm): Computed COD in millimeters.
 
 Notes
 
-The script expects images to follow a naming pattern like DCB_123_45678.JPG to extract ID and timestamp.
+The script expects images to follow a naming pattern like DCB_0001_1705676782.JPG to extract ID and timestamp.
 
 If an Excel file already exists, the script appends data to the relevant sheet.
 
@@ -119,8 +118,26 @@ License
 
 This script is provided as-is without any warranties. Use at your own risk. Please cite the following paper if you use any version of the developed code.
 
-"Transition from Large-Scale Fibre Bridging to Short-Scale via a Thin Plain Weave Interleaf "
+Sutcu, C., Aravand, A., Kazancı, Z., 2024. Transition from large-scale fibre bridging to short-scale via a thin plain weave interleaf. Eng. Fract. Mech. [DOI or Volume/Issue to follow if published].
 
 For any issues or improvements, feel free to modify the script accordingly! 
-This version can adequately calculate COD provided the points are representative of the COD measurement allowing quick and reliable calculation of fibre bridging laws for Fibre reinforced Polmer Composites.
+
+This version can adequately calculate COD provided the points are representative of the COD measurement allowing quick and reliable calculation of fibre bridging laws for fibre-reinforced Polmer (FRP) Composites.
+
 It can also be used outside of composite materials to calculate COD.
+
+Potential updates include;
+
+Automatic method for COD selection points.
+
+A magnified region around the cursor to allow for more accurate pixel selection.
+
+Automatic crack extension calculator to work alongside this to calculate R-curve automatically as well as fibre bridging laws. 
+
+Anything else that can make the code better! 
+
+This can become a tool used for streamlined Mode I fracture toughness and bridging law characterisation of FRP composite materials, but more generally it can become a fracture mechanics measurement tool.
+
+
+
+

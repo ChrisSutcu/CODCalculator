@@ -21,7 +21,6 @@ calibration_done = False  # Flag to indicate if calibration is complete
 image_names = []
 coordinates = []
 crack_extensions_mm = []
-cumulative_crack_extensions_mm = []
 
 pixel_density = None  # Will be calculated dynamically
 
@@ -115,7 +114,7 @@ def calculate_crack_extension(y1, y2, pixel_density):
     # Calculate the difference in y-coordinates in pixels
     y_difference = abs(y2 - y1)
 
-    # Convert the pixel difference to millimeters using the provided scale factor
+    # Convert the pixel difference to millimeters
     crack_extension_mm = y_difference / pixel_density
 
     return crack_extension_mm
@@ -134,7 +133,7 @@ def get_start_point(event, x, y, flags, param):
                 cal_x2, cal_y2 = x, y
                 print(f"Selected second calibration point: ({cal_x2}, {cal_y2})")
 
-                # Prompt user for known thickness immediately
+                # Prompt user for known thickness
                 try:
                     known_thickness_mm = float(input("Enter the known thickness of the specimen (in mm): "))
                     thickness_pixels = abs(cal_y2 - cal_y1)
@@ -251,7 +250,6 @@ def main():
             image_names.append(os.path.basename(image_path))
             coordinates.append(((start_x1, start_y1), (start_x2, start_y2)))
             crack_extensions_mm.append(f"{crack_extension_mm:.3f}")
-            cumulative_crack_extensions_mm.append(f"{cumulative_extension_total:.3f}")
 
             # Move to the next image
             current_image_index = (current_image_index + 1) % num_images

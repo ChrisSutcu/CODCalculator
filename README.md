@@ -32,9 +32,13 @@ Saves results to an Excel file with specimen-specific sheets.
 Experimental Consideration
 
 Ensure that the area of interest from the camera around the COD selection points is as large as possible so that the pixel density can be maximised.
+
 Ensure that the side of the specimen is flat compared to the camera. 
+
 Bright colouring of the specimens helps reflect as much light as possible. 
+
 Use a flash or a torch to illuminate the specimen. 
+
 Select a suitable frequency of image acquisition so that optical flow can work appropriately and there are not large jumps in the COD points between images.
 
 Usage

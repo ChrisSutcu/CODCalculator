@@ -34,11 +34,15 @@ Ensure that the area of interest from the camera around the COD selection points
 
 Ensure that the side of the specimen is flat as much as possible compared to the camera. 
 
+Ensure the specimen is in focus at all times.
+
 Brightly colour the side of the specimens as it helps reflect as much light as possible. 
 
 Use a flash or a torch to illuminate the specimen. 
 
 Select a suitable frequency of image acquisition so that optical flow can work appropriately and there are no large jumps in the COD points between images.
+
+Please note that this particular image processing chain was appropriate for the experimental conditions I faced, and may not be generally applied to all variable experimental conditions, i.e. lighting and specimen configurations. The image processing chain was adequate for my experimental conditions, but it may require some tweaking for other experimental conditions. The goal is to make the edges as continuous and visible as possible so that optical flow can track the pixels between images. Stability in testing conditions is essential.
 
 Usage
 
